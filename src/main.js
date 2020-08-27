@@ -11,6 +11,13 @@ import 'vant/lib/index.css'
 import 'amfe-flexible'
 import HmHeader from './components/HmHeader.vue'
 import HmLogo from './components/HmLogo.vue'
+import axios from 'axios'
+
+// 把axios挂载到vue的原型
+Vue.prototype.$axios = axios
+// 给axios配置默认的baseURL ,基准地址
+axios.defaults.baseURL = 'http://localhost:3000'
+
 // 全局注册组件
 Vue.component('hm-header', HmHeader)
 Vue.component('hm-logo', HmLogo)
