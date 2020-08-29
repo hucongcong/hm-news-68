@@ -33,6 +33,12 @@
 <script>
 // import axios from 'axios'
 export default {
+  created() {
+    console.log(this.$route)
+    const { username, password } = this.$route.params
+    this.username = username
+    this.password = password
+  },
   methods: {
     async login() {
       const res = await this.$axios.post('/login', {
@@ -46,7 +52,10 @@ export default {
         this.$toast.success(message)
         // 保存token
         // 跳转到个人中心
-        this.$router.push('/user')
+        // this.$router.push('/user')
+        this.$router.push({
+          path: '/user'
+        })
       } else {
         this.$toast.fail('登录失败')
       }
@@ -71,7 +80,15 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+// lang: 用于指定css语言  lang="less scss css"
+// scoped: 作用域 当前组件的样式带了scoped，这个样式只会在当前组件生效
+// scoped的原理
+// 1. 给当前模板中的所有的元素都添加一个特殊的属性 data-v-xxxxx
+// 2. 给当前组件的样式中的所有的选择器增加一个属性选择器 div[data-v-xxx] .tips[data-v-xxx]
+div[data-v-xxx] {
+  background-color: pink;
+}
 .tips {
   padding: 15px;
   font-size: 16px;

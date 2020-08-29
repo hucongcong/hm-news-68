@@ -7,8 +7,9 @@ import Register from '../views/Register.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/login', component: Login },
-  { path: '/register', component: Register }
+  // 指定的每一个路由规则都可以提供一个name属性
+  { path: '/login', component: Login, name: 'login' },
+  { path: '/register', component: Register, name: 'register' }
 ]
 
 const router = new VueRouter({
