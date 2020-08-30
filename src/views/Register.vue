@@ -37,6 +37,11 @@
 <script>
 // import axios from 'axios'
 export default {
+  // 还能写3个路由的钩子函数
+  // beforeRouteEnter(to, from, next) {
+  //   console.log('beforeRouteEnter执行')
+  //   next()
+  // },
   data() {
     return {
       user: {

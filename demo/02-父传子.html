@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>vue的例子</h1>
+    <hr>
+    <!-- 
+      1. 父组件提供数据
+      2. 父组件把值传给子组件 通过属性  <son money="100"></money>
+     -->
+    <demo :money="100" :msg="msg"></demo>
+  </div>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('demo', {
+      template: `
+        <div>我是demo组件 --- {{money}} ---- {{msg}}</div>
+      `,
+      props: {
+        money: Number,
+        msg: String
+      }
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      }
+    })
+  </script>
+</body>
+</html>
