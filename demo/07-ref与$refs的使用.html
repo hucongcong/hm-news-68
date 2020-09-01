@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>vue的例子</h1>
+    <p ref="aa">{{msg}}</p>
+    <demo ref="bb"></demo>
+  </div>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script>
+    // ref: reference 引用
+    // 1. 通过ref可以给一个DOM对象或者一个组件添加一个引用（标记)
+    // 2. 在组件中可以通过this.$refs 可以获取到当前组件中所有的引用
+    Vue.component('demo', {
+      template: `
+        <div>我是demo组件</div>
+      `,
+      methods: {
+        focus() {
+          console.log('哈哈哈')
+        }
+      }
+    })
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      },
+      mounted() {
+        // console.log(this.$refs.aa)
+        // console.log(this.$refs.bb)
+
+        // console.log(document.querySelector('p'))
+        // console.log(document.querySelector('demo'))
+        this.$refs.bb.focus()
+      }
+    })
+  </script>
+</body>
+</html>

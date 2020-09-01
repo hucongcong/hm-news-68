@@ -89,9 +89,9 @@ export default {
 // scoped的原理
 // 1. 给当前模板中的所有的元素都添加一个特殊的属性 data-v-xxxxx
 // 2. 给当前组件的样式中的所有的选择器增加一个属性选择器 div[data-v-xxx] .tips[data-v-xxx]
-div[data-v-xxx] {
-  background-color: pink;
-}
+// div[data-v-xxx] {
+//   background-color: pink;
+// }
 .tips {
   padding: 15px;
   font-size: 16px;
@@ -100,4 +100,14 @@ div[data-v-xxx] {
     color: orange;
   }
 }
+
+// .hm-header {
+//   background-color: pink;
+//   /deep/ .title {
+//     color: red;
+//   }
+// }
+// /deep/ .van-field__label {
+//   color: red;
+// }
 </style>

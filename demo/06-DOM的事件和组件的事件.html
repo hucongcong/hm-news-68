@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>vue的例子</h1>
+
+    <demo @click="fn"></demo>
+    <!-- 
+      如果是给dom元素注册的事件  p  div标签, 可以直接触发  
+      如果给组件注册的事件， 必须通过 $emit触发
+    -->
+    <p @click="fn">{{msg}}</p>
+  </div>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('demo', {
+      template: `
+        <div>
+          <h3 @click="clickFn">我是一个demo组件</h3>
+        </div>
+      `,
+      methods: {
+        clickFn() {
+          // console.log('我是demo的点击事件')
+          this.$emit('click')
+        }
+      }
+    })
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      },
+      methods: {
+        fn() {
+          console.log('123')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
