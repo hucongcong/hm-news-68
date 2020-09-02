@@ -1,10 +1,13 @@
 <template>
-  <div class="hm-header">
-    <div class="back" @click="back">
-      <span class="iconfont iconjiantou2"></span>
+  <div>
+    <div class="placeholder"></div>
+    <div class="hm-header">
+      <div class="back" @click="back">
+        <span class="iconfont iconjiantou2"></span>
+      </div>
+      <div class="title"><slot></slot></div>
+      <div class="extra"></div>
     </div>
-    <div class="title"><slot></slot></div>
-    <div class="extra"></div>
   </div>
 </template>
 
@@ -23,7 +26,16 @@ export default {
 </script>
 
 <style lang="less">
+.placeholder {
+  height: 50px;
+  width: 100%;
+}
 .hm-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  background-color: #fff;
   height: 50px;
   border-bottom: 1px solid #ccc;
   display: flex;
