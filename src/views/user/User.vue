@@ -3,17 +3,20 @@
     <div class="header" @click="$router.push('/user-edit')">
       <div class="avatar">
         <!-- 路径必须拼成绝对路径 -->
-        <img :src="base + user.head_img" alt="">
+        <img :src="base + user.head_img" alt="" />
       </div>
       <div class="info">
         <div class="name">
           <!-- <span v-if="user.gender === 1" class="iconfont iconxingbienan"></span>
           <span v-else class="iconfont iconxingbienv"></span> -->
-          <span class="iconfont" :class="user.gender === 1 ? 'iconxingbienan' : 'iconxingbienv'"></span>
-          <span>{{user.nickname}}</span>
+          <span
+            class="iconfont"
+            :class="user.gender === 1 ? 'iconxingbienan' : 'iconxingbienv'"
+          ></span>
+          <span>{{ user.nickname }}</span>
         </div>
         <div class="time">
-          {{user.create_date | time}}
+          {{ user.create_date | time }}
         </div>
       </div>
       <div class="arrow">
@@ -79,6 +82,8 @@ export default {
       localStorage.removeItem('userId')
       this.$router.push('/login')
       this.$toast.success('退出成功')
+      localStorage.removeItem('activeList')
+      localStorage.removeItem('deactiveList')
     }
   }
 }

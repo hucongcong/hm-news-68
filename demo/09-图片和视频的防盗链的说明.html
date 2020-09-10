@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 爬虫 -->
+  <!-- 防盗链：1. 给资源加水印 2. referer -->
+  <script>
+    var str = '"<p><span style="color: rgb(34, 34, 34);">https://video.pearvideo.com/mp4/third/20200713/cont-1685685-11107897-184945-hd.mp4</span></p>"';
+    
+    // 如果获取到这一段 标签中的内容
+    var div = document.createElement('div')
+    div.innerHTML = str
+    console.log(div.innerText)
+  </script>
+</body>
+</html>

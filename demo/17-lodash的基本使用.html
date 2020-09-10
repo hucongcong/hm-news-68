@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text">
+  <script src="../node_modules/lodash/lodash.js"></script>
+  <script>
+    // _
+    console.log(_.random(1,3))
+    console.log(_.round(4.6667777, 2))
+
+    // 参数1：需要执行的函数  参数2：时间间隔
+    // 返回一个防抖函数，这个函数已经是防抖的了
+    // _.debounce(fn, time)
+    var input = document.querySelector('input')
+    // function fn() {
+    //   console.log(input.value)
+    // }
+    // var newFn = _.debounce(fn, 1000)
+    // input.oninput = newFn
+
+    input.oninput = _.throttle(function() {
+      console.log(this.value)
+    }, 500)
+  </script>
+</body>
+</html>

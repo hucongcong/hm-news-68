@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .demo {
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>vue的例子</h1>
+    <hr>
+    <demo :count="1"></demo>
+  </div>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script>
+    // // 递归组件： 在组件中渲染组件本身，一定要有渲染的条件（某种情况下不进行渲染）
+    // Vue.component('demo', {
+    //   template: `
+    //     <div class="demo">
+    //       <h3>我是demo组件</h3>
+    //       <demo></demo>
+    //     </div>
+    //   `
+    // })
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      },
+      components: {
+        demo: {
+          name: 'demo',
+          props: {
+            count: Number,
+          },
+          template: `
+            <div>
+              <div class="demo">
+                <h3>{{count}}我是demo组件</h3>
+              </div>
+              <demo :count="count+1" v-if="Math.random() > 0.5"></demo>
+            </div>
+          `,
+        }
+      }
+    })
+  </script>
+</body>
+</html>

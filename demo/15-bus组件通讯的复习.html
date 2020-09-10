@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    组件A 要给 组件B通讯
+    1. 创建一个bus (空的vue实例)
+    2. 组件A提供数据
+    3. 组件A触发BUS的一个自定义的事件  send
+    4. 组件B给BUS注册一个自定义的事件  send   细节：组件B注册事件要比组件A触发事件早
+        组件B的created mounted中去给bus注册事件
+    5. 组件B通过事件处理函数就能够接收到组件A的数据
+   -->
+  <div id="app">
+    <h1>vue的例子</h1>
+
+    <hr>
+    <son1></son1>
+    <son2></son2>
+  </div>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script>
+    // 1. 创建一个bus (空的vue实例) event bus 事件  bus公交车
+    const bus = new Vue()
+
+    Vue.component('son1', {
+      template: `
+        <div>
+          <h3>我是a组件---{{money}}</h3>
+          <button @click="clickFn">给b钱</button>
+        </div>
+      `,
+      // 2. 组件a提供数据
+      data() {
+        return {
+          money: 10000
+        }
+      },
+      methods: {
+        clickFn() {
+          // 3. 组件a触发bus的事件
+          bus.$emit('reply', this.money)
+        }
+      }
+    })
+    Vue.component('son2', {
+      template: `
+        <div>
+          <h3>我是b组件==={{money}}</h3>
+        </div>
+      `,
+      data() {
+        return {
+          money: ''
+        }
+      },
+      created() {
+        bus.$on('reply', (money) => {
+          console.log('bus的事件', money)
+          this.money = money
+        })
+      }
+    })
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      }
+    })
+  </script>
+</body>
+</html>

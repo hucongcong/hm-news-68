@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>vue的例子</h1>
+    <p>{{reverseMsg}}</p>
+    <p>{{reverseMsg}}</p>
+    <p>{{reverseMsg}}</p>
+    <p>{{reverseMsg}}</p>
+    <p>{{reverseMsg}}</p>
+
+    <p>{{ reverseMsg1() }}</p>
+    <p>{{ reverseMsg1() }}</p>
+    <p>{{ reverseMsg1() }}</p>
+    <p>{{ reverseMsg1() }}</p>
+    <p>{{ reverseMsg1() }}</p>
+  </div>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      },
+      // 计算属性带有缓存
+      computed: {
+        reverseMsg() {
+          console.log('computed执行了')
+          return this.msg.split('').reverse().join('')
+        }
+      },
+      methods: {
+        reverseMsg1() {
+          console.log('方法执行了')
+          return this.msg.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

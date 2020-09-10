@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var data = {
+      name: '张六',
+      age: 10,
+      parent: {
+        name: '张吴',
+        age: 30,
+        parent: {
+          name: '张思',
+          age: 50,
+          parent: {
+            name: '老王',
+            age: 70
+          }
+        }
+      }
+    }
+    /* 
+      需求：统计对象中parent出现的次数，，，，统计几层楼
+      参数：
+        参数1：统计的次数 num
+        参数2：需要统计的对象 data
+      
+      思路：
+        如果接收到的data有parent， 继续调用getCount,,,,让num+1  ，data.parent
+        如果接收到的data没有parent,不用递归了，直接返回num
+    */
+    function getCount(num, data) {
+      if (data.parent) {
+        return getCount(num + 1, data.parent)
+      } else {
+        return num
+      }
+    }
+    console.log(getCount(0, data))
+  </script>
+</body>
+</html>

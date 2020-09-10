@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 递归函数: 一个函数直接或者间接的调用自己
+    // 递归函数一定要有结束的条件，不然就是死递归
+    // function fn() {
+    //   console.log('我是一个函数，我需要执行')
+    //   fn1()
+    // }
+    // function fn1() {
+    //   console.log('我是fn1')
+    //   fn()
+    // }
+    // fn()
+
+    // 函数只调用5次
+    var count = 0
+    function fn() {
+      count++
+      console.log('我是fn函数')
+      if (count < 5) {
+        fn()
+      }
+    }
+    fn()
+    
+  </script>
+</body>
+</html>
